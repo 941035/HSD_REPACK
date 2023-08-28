@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZEWM_PICKING_ENH_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="PrinterDetail" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Bname"/>
+                </Key>
+                <Property Name="Bname" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Spld" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Output Device" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ExceptionList1" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Lgnum"/>
+                </Key>
+                <Property Name="Lgnum" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Warehouse No." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Exccode" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Exception Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Descr" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ConfirmWarehouseTask" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Tanum"/>
+                    <PropertyRef Name="Papos"/>
+                </Key>
+                <Property Name="Lgnum" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Warehouse Number" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Queue" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Queue" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Prsrc" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Resource" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Who" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Warehouse Order" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Tanum" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Warehouse Task" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Papos" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Seq.No. WT Data" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Squit" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Confirm" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Vlpla" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Source Bin" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Svlpla" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Scaned Source Bin" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Matid" Type="Edm.String" Nullable="false" MaxLength="16" sap:unicode="false" sap:label="Product" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Smatid" Type="Edm.String" Nullable="false" MaxLength="16" sap:unicode="false" sap:label="Scaned Product" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Matkx" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Vsolm" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Target Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Meins" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Base UoM" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Nista" Type="Edm.Decimal" Nullable="false" Precision="31" Scale="14" sap:unicode="false" sap:label="Actual Quantity" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Batchid" Type="Edm.Binary" Nullable="false" sap:unicode="false" sap:label="Batch" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Sbatchid" Type="Edm.String" Nullable="false" MaxLength="16" sap:unicode="false" sap:label="Scaned Batch" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Nlpla" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Destination Bin" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Snlpla" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Scaned Destination Bin" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="CWTtoExc" Relationship="ZEWM_PICKING_ENH_SRV.CWTtoExc" FromRole="FromRole_CWTtoExc" ToRole="ToRole_CWTtoExc"/>
+                <NavigationProperty Name="CWTtoSer" Relationship="ZEWM_PICKING_ENH_SRV.CWTtoSer" FromRole="FromRole_CWTtoSer" ToRole="ToRole_CWTtoSer"/>
+                <NavigationProperty Name="CWTtoRet" Relationship="ZEWM_PICKING_ENH_SRV.CWTtoRet" FromRole="FromRole_CWTtoRet" ToRole="ToRole_CWTtoRet"/>
+            </EntityType>
+            <EntityType Name="ItConfExc" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Tanum"/>
+                    <PropertyRef Name="Papos"/>
+                </Key>
+                <Property Name="Tanum" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Warehouse Task" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Papos" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Seq.No. WT Data" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Exccode" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Exception Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ItConfSerid" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Tanum"/>
+                    <PropertyRef Name="Papos"/>
+                </Key>
+                <Property Name="Tanum" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Warehouse Task" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Lscheck" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Checkbox" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Papos" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Seq.No. WT Data" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Serid" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Serial Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="HandlerDetail" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Uname"/>
+                </Key>
+                <Property Name="Uname" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Lgnum" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Rsrc" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Rsrcgrp" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Seqno" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Queue" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ItConfRet" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Id" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Number" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="220" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="CWTtoSer" sap:content-version="1">
+                <End Type="ZEWM_PICKING_ENH_SRV.ConfirmWarehouseTask" Multiplicity="1" Role="FromRole_CWTtoSer"/>
+                <End Type="ZEWM_PICKING_ENH_SRV.ItConfSerid" Multiplicity="*" Role="ToRole_CWTtoSer"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_CWTtoSer">
+                        <PropertyRef Name="Tanum"/>
+                        <PropertyRef Name="Papos"/>
+                    </Principal>
+                    <Dependent Role="ToRole_CWTtoSer">
+                        <PropertyRef Name="Tanum"/>
+                        <PropertyRef Name="Papos"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="CWTtoRet" sap:content-version="1">
+                <End Type="ZEWM_PICKING_ENH_SRV.ConfirmWarehouseTask" Multiplicity="1" Role="FromRole_CWTtoRet"/>
+                <End Type="ZEWM_PICKING_ENH_SRV.ItConfRet" Multiplicity="*" Role="ToRole_CWTtoRet"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_CWTtoRet">
+                        <PropertyRef Name="Papos"/>
+                        <PropertyRef Name="Tanum"/>
+                    </Principal>
+                    <Dependent Role="ToRole_CWTtoRet">
+                        <PropertyRef Name="Type"/>
+                        <PropertyRef Name="Id"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="CWTtoExc" sap:content-version="1">
+                <End Type="ZEWM_PICKING_ENH_SRV.ConfirmWarehouseTask" Multiplicity="1" Role="FromRole_CWTtoExc"/>
+                <End Type="ZEWM_PICKING_ENH_SRV.ItConfExc" Multiplicity="*" Role="ToRole_CWTtoExc"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_CWTtoExc">
+                        <PropertyRef Name="Tanum"/>
+                        <PropertyRef Name="Papos"/>
+                    </Principal>
+                    <Dependent Role="ToRole_CWTtoExc">
+                        <PropertyRef Name="Tanum"/>
+                        <PropertyRef Name="Papos"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZEWM_PICKING_ENH_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="PrinterDetailSet" EntityType="ZEWM_PICKING_ENH_SRV.PrinterDetail" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ExceptionList1Set" EntityType="ZEWM_PICKING_ENH_SRV.ExceptionList1" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ConfirmWarehouseTaskSet" EntityType="ZEWM_PICKING_ENH_SRV.ConfirmWarehouseTask" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ItConfExcSet" EntityType="ZEWM_PICKING_ENH_SRV.ItConfExc" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ItConfSeridSet" EntityType="ZEWM_PICKING_ENH_SRV.ItConfSerid" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="HandlerDetailSet" EntityType="ZEWM_PICKING_ENH_SRV.HandlerDetail" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ItConfRetSet" EntityType="ZEWM_PICKING_ENH_SRV.ItConfRet" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <AssociationSet Name="CWTtoRetSet" Association="ZEWM_PICKING_ENH_SRV.CWTtoRet" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ConfirmWarehouseTaskSet" Role="FromRole_CWTtoRet"/>
+                    <End EntitySet="ItConfRetSet" Role="ToRole_CWTtoRet"/>
+                </AssociationSet>
+                <AssociationSet Name="CWTtoExcSet" Association="ZEWM_PICKING_ENH_SRV.CWTtoExc" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ConfirmWarehouseTaskSet" Role="FromRole_CWTtoExc"/>
+                    <End EntitySet="ItConfExcSet" Role="ToRole_CWTtoExc"/>
+                </AssociationSet>
+                <AssociationSet Name="CWTtoSerSet" Association="ZEWM_PICKING_ENH_SRV.CWTtoSer" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ConfirmWarehouseTaskSet" Role="FromRole_CWTtoSer"/>
+                    <End EntitySet="ItConfSeridSet" Role="ToRole_CWTtoSer"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link rel="self" href="https://parkerdewvm:8001/sap/opu/odata/sap/ZEWM_PICKING_ENH_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://parkerdewvm:8001/sap/opu/odata/sap/ZEWM_PICKING_ENH_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
