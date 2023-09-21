@@ -1,11 +1,12 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
-    "sap/ui/model/json/JSONModel"
+    "sap/ui/model/json/JSONModel",
+    "sap/m/MessageBox"
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller,JSONModel) {
+    function (Controller,JSONModel,MessageBox) {
         "use strict";
 
         return Controller.extend("com.sap.parker.zwmhsdrepack.controller.MainView", {
@@ -68,14 +69,29 @@ sap.ui.define([
                 this.getView().byId("setRestart").setVisible(false);
                 this.getView().byId("setPrinterbtn").setText("Print");
             },
+            onCreateWareHouseTask: function(){
+                this.oDataModel.create("/RepackInstructionsSet", this.payloadData, {
+
+                    success: function (oData) {
+                        MessageBox.success("Warehouse Task created successfully");
+
+                    },
+                    error: function (oError) {
+                        console.log("error");
+                        MessageBox.error(JSON.parse(oError.responseText).error.message.value);
+                    }
+                });
+            },
             onExecutePress: function(){
                 var that = this;
+                this.payloadData={};
                 this.partNumber= this.getView().byId("inpPartNumber").getValue();
                 this.qty = this.getView().byId("inpQty").getValue();
                 this.oDataModel.read("/RepackInstructionsSet(Qty='"+ this.qty +"',Matnr='" +this.partNumber+"')", {
 				
                     success: function (oData) {
                         console.log(oData);
+                        that.payloadData = oData;
                         var rePackModel = new JSONModel();
                         rePackModel.setData(oData);
                         that.getView().byId("repackingDetailsForm").setModel(rePackModel,"rePackModel");
@@ -85,10 +101,12 @@ sap.ui.define([
                         sap.m.MessageToast.show(oData.Message);
                         // that.getView().byId("printingDetailsForm").setVisible(true);
                         that.getView().byId("setPrinterbtn").setVisible(true);
+                        that.getView().byId("crtWarehousebtn").setVisible(true);
                        }
                        else{
                            that.getView().byId("repackingDetailsForm").setVisible(true);
                            that.getView().byId("setPrinterbtn").setVisible(true);
+                           that.getView().byId("crtWarehousebtn").setVisible(true);
                        }
     
                     },

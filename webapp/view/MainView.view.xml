@@ -80,6 +80,7 @@
 		<semantic:customFooterContent>
 			<Button id="setRestart" visible="false" text="Restart" type="Accept" press="onRestart"/>
             <Button id="setPrinterbtn" visible="false" text="Print" type="Accept" press="onPrint"/>
+			<Button id="crtWarehousebtn" visible="false" text="Create" type="Accept" press="onCreateWareHouseTask" />
             <Button id="execbtn" text="Execute" type="Accept" press="onExecutePress"/>
 		</semantic:customFooterContent>
 	</semantic:FullscreenPage>
